@@ -31,7 +31,16 @@ class Elevator
   Panel panel;
   
   // friend function
-  friend ostream& operator<<(ostream&, const Elevator&); 
+  friend ostream& operator<<(ostream&, const Elevator&);
+
+  // count-down timer before closing door
+  void resetTimer() {timer = 3;}
+  void tickTimer() {timer--;}
+  bool timedOut() const {return timer == 0;}
+
+  bool isOpen() const {return atFloorIndex >= 0;}
+  void openDoorTo(int); // parameter is index in Building::floors array
+  void board(const Rider&); // adds a Rider to the Elevator
 };
 
 #endif

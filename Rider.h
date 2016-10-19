@@ -8,6 +8,8 @@ struct Rider
 {
   const int to;
   const int from;
+  bool goingUp;
+  bool goingDown;
   Rider(int, int); 
   Rider& operator=(const Rider&);
 };

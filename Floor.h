@@ -27,5 +27,9 @@ class Floor{
 
   // for external reporting
   friend ostream& operator<<(ostream&, const Floor&); // say name, location, #'s of up/down riders waiting
+  bool hasUpRider() const {return !upRiders.empty();}
+  bool hasDownRider() const {return !downRiders.empty();};
+  void addRider(const Rider&);
 };
+
 #endif

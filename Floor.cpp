@@ -1,6 +1,7 @@
 #include "Floor.h"
 #include "Rider.h"
 #include "Panel.h"
+#include "Building.h"
 
 #include <iostream>
 #include <iomanip>
@@ -26,4 +27,15 @@ Floor::Floor(const int elevation, const char* const name, const char* const labe
 ostream& operator<<(ostream& out, const Floor& floor){
   out << setw(2) << floor.label << setw(15) << floor.name << " at" << setw(8) << floor.elevation << "\" Up/Down:  " << setw(2) << floor.upRiders.size() << "/" << floor.downRiders.size() << setw(12) << "Buttons: " << floor.panel;
   return out;
+}
+
+void Floor::addRider(const Rider& r){
+  if(r.goingUp){
+    upRiders.push(r);
+    panel.press(UP);
+  }
+  else{
+    downRiders.push(r);
+    panel.press(DOWN);
+  }
 }
